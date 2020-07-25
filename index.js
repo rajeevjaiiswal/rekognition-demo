@@ -16,11 +16,14 @@ const { RSA_NO_PADDING } = require('constants');
 
 
 
-
+//HTML
 app.use(express.static('public'));
 
+//AWS Rekognition Object - AWS SDK
 var rekognition = new AWS.Rekognition({region: config.region});
 
+
+//Post file for face Match
 app.post('/api/recognize', upload.single("image"), function (req, res, next) {
 	var bitmap = fs.readFileSync(req.file.path);
 
@@ -46,15 +49,21 @@ app.post('/api/recognize', upload.single("image"), function (req, res, next) {
 	});
 });
 
+
+//API for adding faces in collection. Source folder : faces (hard coded)
 app.get('/api/indexfaces', function (req, res) {
 	indexFaces();
 	res.send("All faces added");
   })
 
+//API for creating collection
   app.get('/api/createcollection', function (req, res) {
 	createCollection();
 	res.send("Collection Created");
   })
+
+
+  
 
   function indexFaces() {
 	var klawSync = require('klaw-sync')

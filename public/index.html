@@ -2,15 +2,31 @@
 	<head>
 	</head>
 <body>
-<h1>		Rekognition - Face Mach Demo
+<h1>		Amazon Rekognition - Face Mach Demo
 
 </h1>
-<h2></h2>
+<h2>Upload Image and click on Submit to Match:</h2>
 
 	<form action="/api/recognize" method="post" enctype="multipart/form-data">
 		<input type="file" accept="image/*;capture=camera" name="image" id="image">
 		<br>
 		<br>
+		<input type="submit">
+	</form>
+	<br>
+	<br>
+	<h2>Create Collection (Update config for collection name) : </h2>
+
+	<form action="/api/createcollection" method="get" enctype="multipart/form-data">
+
+		<input type="submit">
+	</form>
+	<br>
+	<br>
+	<h2>Add Faces to Collection (From Faces folder) : </h2>
+
+	<form action="/api/indexfaces" method="get" enctype="multipart/form-data">
+
 		<input type="submit">
 	</form>
 </body>
